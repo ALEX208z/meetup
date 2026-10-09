@@ -2,6 +2,7 @@ import React from "react";
 import { dummyUser } from "../assets/asset";
 import { Link, useLocation } from "react-router-dom";
 import { AstroidIcon, HistoryIcon, LayoutDashboardIcon } from "lucide-react";
+import { UserButton } from "@clerk/react";
 
 const Navbar = () => {
   const { isSignedIn, user } = { user: dummyUser, isSignedIn: true };
@@ -60,16 +61,22 @@ const Navbar = () => {
           )}
 
 
-
-
-
-
-
-
-
       </div>
 
       {/* Right Profile / UserButton  */}
+        {isSignedIn && (
+          <div className="flex items-center gap-4">
+            <Link to="/sessions" className="md:hidden text-xs font-medium text-slate-600 hover:text-primary flex items-center gap-1">
+            <HistoryIcon className="w-4 h-4"/>
+            Sessions
+            </Link>
+            <span className="font-medium hidden sm:inline tracking-wide text-sm text-slate-700">Welcome, {userName}</span>
+
+            <UserButton afterSignOutUrl="/login"/>
+          </div>
+        )}
+
+
     </header>
   );
 };
