@@ -28,7 +28,7 @@ const Dashboard = () => {
   const handleCreateMeeting = () => {
     setIsCreating(true)
     const chars = "abcdefghijklmnopqrstuvwxyz";
-    const seg = () => Array.form({length: 3}, () => chars[Math.floor(Math.random() * chars.length)]).join("");
+    const seg = () => Array.from({length: 3}, () => chars[Math.floor(Math.random() * chars.length)]).join("");
     const newMeetingId = `${seg()}-${seg()}`;
 
     setTimeout(() => {
@@ -37,7 +37,16 @@ const Dashboard = () => {
       navigate(`/meeting/${newMeetingId}`)
     },400)
   };
-  const handleJoinMeeting = (e) => {};
+  const handleJoinMeeting = (e) => {
+    e.preventDefault();
+    const cleanId = joinId.trim();
+    if(!cleanId) {
+      toast.error("Please enter a valid Meeting ID");
+      return;
+    }
+
+    navigate(`/meeting/${cleanId}`)
+  };
 
   return (
     <div className="flex-1 max-w-7xl w-full mx-auto p-6 md:p-12 flex flex-col justify-center">
