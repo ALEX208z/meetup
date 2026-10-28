@@ -36,6 +36,19 @@ const MeetingRoom = () => {
         </div>
       </header>
 
+      {/* Main Content Area (Video Grid + Side Panels) */}
+      <div className='flex-1 flex overflow-hidden relative'>
+
+        {/* Video Grid Center */}
+
+        {/* In-Meeting Chat Drawer */}
+
+        {/* Participants Drawer */}
+
+        {/* Bottom Floating Control Bar */}
+
+      </div>
+
     </div>
   )
 }
